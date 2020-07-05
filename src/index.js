@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { StateProvider } from './store/store';
+import { StoreProvider } from './store/store';
 
 ReactDOM.render(
   <React.StrictMode>
-    <StateProvider>
+    <StoreProvider>
       <App />
-    </StateProvider>
+    </StoreProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

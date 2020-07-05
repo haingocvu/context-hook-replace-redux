@@ -1,14 +1,15 @@
 import React, { useContext, useEffect } from 'react';
-import { store } from '../store/store';
+import { StateContext, DispatchContext } from '../store/store';
 import { COUNTER_DECREASEMENT, COUNTER_INCREASEMENT } from '../store/actions';
 
 export default function Counter(props) {
 
-    const [rootState, dispatch] = useContext(store);
+    const {counterState} = useContext(StateContext);
+    const dispatch = useContext(DispatchContext);
 
     useEffect(() => {
-        console.log(rootState.counterState);
-    }, [rootState.counterState])
+        console.log(counterState);
+    }, [counterState])
     
     function handleDecreasement() {
         dispatch(COUNTER_DECREASEMENT(8))
@@ -27,7 +28,7 @@ export default function Counter(props) {
             <button onClick={handleDecreasement}>-</button>
             <input 
                 style={{ textAlign: "center", marginLeft: '10px', marginRight: '10px' }} 
-                value={rootState.counterState.count} 
+                value={counterState.count} 
                 onChange={handleChange}/>
             <button onClick={handleIncreasement}>+</button>
         </div>
