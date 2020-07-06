@@ -1,10 +1,10 @@
 import React, { useContext, useEffect } from 'react';
-import { store } from '../store/store';
+import { storeContext } from '../store/store';
 import { COUNTER_DECREASEMENT, COUNTER_INCREASEMENT } from '../store/actions';
 
 export default function Counter(props) {
 
-    const [rootState, dispatch] = useContext(store);
+    const [rootState, dispatch] = useContext(storeContext);
 
     useEffect(() => {
         console.log(rootState.counterState);
