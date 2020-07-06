@@ -1,6 +1,8 @@
-import { combineReducers } from 'redux';
 import { CounterReducer } from './CounterReducer';
+import { UnusedReducer } from './UnusedReducer';
+import { combineSliceReducer } from '../../utils/combineSliceReducer';
 
-export const RootReducer = combineReducers({
+export const RootReducer = combineSliceReducer({
     counterState: CounterReducer,
+    unusedState: UnusedReducer,
 });

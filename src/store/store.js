@@ -1,14 +1,15 @@
-import React, { createContext, useReducer } from 'react';
+import React, { createContext, useReducer, useMemo } from 'react';
 import { RootReducer } from './reducers/RootReducer';
 import { initialState } from '../common/const';
 
-export const store = createContext();
+export const storeContext = createContext();
 
 export function StateProvider({ children }) {
-    const { Provider } = store;
-    const [state, dispatch] = useReducer(RootReducer, initialState)
+    const { Provider } = storeContext;
+    const [state, dispatch] = useReducer(RootReducer, initialState);
+    const store = useMemo(() => [state, dispatch], [state])
     return (
-        <Provider value={[state, dispatch]}>
+        <Provider value={store}>
             {children}
         </Provider>
     )
